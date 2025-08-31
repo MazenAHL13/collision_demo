@@ -4,3 +4,4 @@ signal collected
 func _on_area_entered(area: Area2D) -> void:
 	collected.emit()
 	queue_free()
+	

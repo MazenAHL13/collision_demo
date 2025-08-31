@@ -2,6 +2,7 @@ extends Node2D
 
 var rn = RandomNumberGenerator.new()
 const FireballScene = preload("res://scenes/fireball.tscn")
+var vulnerable: bool = false
 
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -31,3 +32,15 @@ func _on_activate_zone_body_entered(body: Node2D) -> void:
 func _on_activate_zone_body_exited(body: Node2D) -> void:
 	animation_player.play("Idle")
 	timer.stop()
+	
+func set_vulnerable(on: bool) -> void:
+	vulnerable = on
+	
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if vulnerable:
+		queue_free() 
+	else:
+		print("Enemy is not vulnerable!")
+	

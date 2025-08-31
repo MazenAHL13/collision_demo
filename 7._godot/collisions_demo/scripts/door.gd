@@ -1,4 +1,5 @@
 extends Area2D
+signal door_entered
 
 @export var closed_texture: Texture2D
 @export var open_texture: Texture2D
@@ -13,3 +14,7 @@ func open():
 func close():
 	$CollisionShape2D.disabled = true
 	$Sprite2D.texture = closed_texture
+	
+func _on_area_entered(area: Area2D) -> void:
+	print("DOOR body_entered:", area)
+	door_entered.emit()

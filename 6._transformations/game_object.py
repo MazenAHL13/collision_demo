@@ -123,3 +123,14 @@ class Tank:
 
         for x, y, theta, speed in self.bullets:
             arcade.draw_point(x, y, arcade.color.RED, 7)
+class Enemy(Tank):
+    def __init__(self, x, y, color):
+        self.x = x
+        self.y = y
+        self.speed = 0
+        self.angular_speed = 0
+        self.theta = 0
+        self.body = Polygon2D(
+            [(100 + x, y), (x, 50 +y), (x, -50 + y)],
+            color
+        )

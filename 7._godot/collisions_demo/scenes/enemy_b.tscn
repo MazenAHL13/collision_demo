@@ -103,9 +103,9 @@ _data = {
 size = Vector2(654, 344)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vwptu"]
-radius = 32.0
+radius = 38.6005
 
-[node name="EnemyB" type="Node2D"]
+[node name="EnemyB" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_nukko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -126,7 +126,7 @@ shape = SubResource("RectangleShape2D_nukko")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_vwptu")
@@ -137,4 +137,5 @@ debug_color = Color(0.708025, 0.485336, 0.116112, 0.42)
 
 [connection signal="body_entered" from="ActivateZone" to="." method="_on_activate_zone_body_entered"]
 [connection signal="body_exited" from="ActivateZone" to="." method="_on_activate_zone_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
